@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 sphinx = "*"
 setuptools = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.8"

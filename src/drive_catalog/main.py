@@ -4,6 +4,9 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
+sys.path.append('src')
+from drive_catalog import __version__
+
 
 def sizeof_fmt(num, suffix='B'):
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
@@ -79,7 +82,6 @@ def addFilesToDatabase(self, path, scope, newDrive, progress_callback):
     return "Done."
 
 def main():
-    print('Running Main!')
     # create parser
     my_parser = argparse.ArgumentParser(
         description='Return formatted file information')
@@ -91,6 +93,9 @@ def main():
                            help = (
                                'The path of the drive or folder to process.')
                           )
+    my_parser.add_argument('--version', action='version',
+                           version='{}'.format(__version__),
+                           help='Show the version number and exit.')
     
     # Execute the parser_args method
     args = my_parser.parse_args()
