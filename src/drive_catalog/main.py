@@ -3,6 +3,7 @@ import os
 import argparse
 from datetime import datetime
 from pathlib import Path
+from shutil import disk_usage
 
 sys.path.append('src')
 from drive_catalog import __version__
@@ -81,6 +82,39 @@ def addFilesToDatabase(self, path, scope, newDrive, progress_callback):
             # print('{} added to database.'.format(fileName))
     return "Done."
 
+def getDriveInfo(path):
+    """Get the drive info from the supplied path
+
+    Test if it is removable media. If not, return folder information.
+
+    isRemoveableDrive
+    
+
+    """
+    p = Path(path)
+    total_files = len(list(p.glob("**/*")))
+    drive_info = p.stat()
+    drive_is_mount = p.is_mount() 
+    drive_shutilstats = disk_usage(p)
+    drive_size_in_bytes = drive_shutilstats.total
+    drive_free_space_in_bytes = drive_shutilstats.free
+    drive_used_space_in_bytes = drive_shutilstats.used
+    drive_name = p.stem
+    drive_create_date = datetime.fromtimestamp(drive_info.st_ctime)
+    drive = {'name': drive_name,
+             'total_files': total_files,
+             'portable_drive': drive_is_mount,
+             'size': drive_size_in_bytes,
+             'free': drive_free_space_in_bytes,
+             'used': drive_used_space_in_bytes,
+             'create_date': drive_create_date,
+            }
+    return drive
+
+
+#    st_size=131072, st_atime=315547200, st_mtime=315547200, st_ctime=315547200)
+
+
 def main():
     # create parser
     my_parser = argparse.ArgumentParser(
@@ -105,7 +139,8 @@ def main():
     files = set()
     for path in full_paths:
         print('Path: {}'.format(path))
-
+        drive_info = getDriveInfo(path)
+        print('Drive Info: {}'.format(drive_info))
 
 if __name__ == '__main__':
     main()
