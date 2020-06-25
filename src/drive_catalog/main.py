@@ -17,29 +17,23 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-def addFilesToDatabase(self, path, scope, newDrive, progress_callback):
-    # create session and connection for this thread.
-    temp_session = Session()
-    # set the extensions to search for
-    images_set = set(['.jpg', '.JPG', '.jpx', '.png', '.gif',
-                      '.tif', '.bmp', '.psd', 'heic', '.eps'])
-    videos_set = set(['.MP4', '.mp4', '.m4v', '.mkv', '.webm',
-                      '.mov', '.avi', '.wmv', '.mpg', '.flv', '.MOV'])
-    audio_set = set(['mp3', '.m4a', '.ogg', '.falc', '.wav'])
-    # Set variables then write new file to database
-    p = Path(path)
+# set the extensions to search for
+images_set = set(['.jpg', '.JPG', '.jpx', '.png', '.gif',
+                  '.tif', '.bmp', '.psd', 'heic', '.eps'])
+videos_set = set(['.MP4', '.mp4', '.m4v', '.mkv', '.webm',
+                  '.mov', '.avi', '.wmv', '.mpg', '.flv', '.MOV'])
+audio_set = set(['mp3', '.m4a', '.ogg', '.falc', '.wav'])
 
+def getFileInfo(path):
+    p = Path(path)
+    files = []
     # Recursive walk
-    n = 0
-    # find out the number of files for progress bar
-    total_files = len(list(p.glob("**/*")))
-    print('total_files: {}'.format(total_files))
     for child in p.glob("**/*"):
-        n = n + 1
-        progress_callback.emit(n*100/total_files)
         if child.is_dir():
-            continue
-        elif child.exists():
+            is_directory = True 
+        else:
+            is_directory = False
+        if child.exists():
             child_info = ''
             try:
                 child_info = child.stat()
@@ -54,8 +48,7 @@ def addFilesToDatabase(self, path, scope, newDrive, progress_callback):
                 fileType = 'Audio'
             else:
                 fileType = ''
-            if (scope == "Media Files" and fileType == ""):
-                continue
+
             child_size = ''
 
             create_date = ''
@@ -68,19 +61,16 @@ def addFilesToDatabase(self, path, scope, newDrive, progress_callback):
             fileSize = child_size
             filepath = str(child)
             thumbnail = ''
-            drive_id = newDrive.id
 
-            currentfile = File(fileName,
-                               fileSize,
-                               fileType,
-                               filepath,
-                               thumbnail,
-                               create_date,
-                               drive_id)
-            temp_session.add(currentfile)
-            temp_session.commit()
-            # print('{} added to database.'.format(fileName))
-    return "Done."
+            currentfile = {'name': fileName,
+                           'size': fileSize,
+                           'type': fileType,
+                           'path': filepath,
+                           'create_date': create_date,
+                           'is_directory': is_directory,
+                          }
+            files.append(currentfile)
+    return files
 
 def getDriveInfo(path):
     """Get the drive info from the supplied path
@@ -141,6 +131,8 @@ def main():
         print('Path: {}'.format(path))
         drive_info = getDriveInfo(path)
         print('Drive Info: {}'.format(drive_info))
+        file_info = getFileInfo(path)
+        print('File Info: {}'.format(file_info))
 
 if __name__ == '__main__':
     main()
