@@ -4,13 +4,17 @@
 :type path: os.path
 
 :return: Returns a dictionary of drive information as:
-    {'name': str, drive name,
-    'total_files;: int, total number of files in drive,
-    'portable_drive': bool, Is the drive a mounted drive,
-    'size': int, size of drive in bytes,
-    'free': int, free space of drive in bytes,
-    'used': int, used space of drive in bytes,
-    'create_date': datetime, the reported create date of the drive}
+
+.. code-block:: python
+
+    {'name': str, # drive name
+    'total_files;: int, # total number of files in drive
+    'portable_drive': bool, # Is the drive a mounted drive
+    'size': int, # size of drive in bytes
+    'free': int, # free space of drive in bytes
+    'used': int, # used space of drive in bytes
+    'create_date': datetime, # the reported create date of the drive}
+
 """
 from datetime import datetime
 from pathlib import Path
@@ -20,11 +24,10 @@ from shutil import disk_usage
 def get_drive_info(path):
     """Get the drive info from the supplied path
 
-    Test if it is removable media. If not, return folder information.
+    :param path: The path of the folder or drive
+    :type path: os.path
 
-    isRemoveableDrive
-    
-
+    :return: Returns a dictionary of drive information.
     """
     p = Path(path)
     total_files = len(list(p.glob("**/*")))

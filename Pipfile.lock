@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "90a2536a134d01b8d84d92051945ae09a9d4d8a561ff9f4cd186a50117f4c88d"
+            "sha256": "b136f9706016fc4de92596e72fa896e7e5a95bc71899e01b30aff016a6c11ac0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -52,6 +52,14 @@
                 "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"
             ],
             "version": "==3.0.4"
+        },
+        "cloud-sptheme": {
+            "hashes": [
+                "sha256:82be47ddebbc045e7386269fc062f79d6f87cefe8e5c1e35fe0e9f4266a57723",
+                "sha256:caf47ac4c6346eef47fc11e799adbeaf645921c712cc099cf2530560e7ecde44"
+            ],
+            "index": "pypi",
+            "version": "==1.10.1.post20200504175005"
         },
         "docutils": {
             "hashes": [

@@ -1,3 +1,21 @@
+"""fileinfo returns file and directory information.
+
+:param path: The path of a folder or drive
+:type path: os.path
+
+:return: Returns a list of dictionaries of file information s:
+
+.. code-block:: python
+
+    {'name': str, # file name
+    'size': str, # file size in bytes
+    'path': str, # the path of the file
+    'create_date': datetime # the reported create date of the file
+    'is_directory': bool # True if the current item is a directory or folder
+    }
+
+"""
+
 import sys
 import os
 import argparse
@@ -6,6 +24,7 @@ from pathlib import Path
 
 
 def sizeof_fmt(num, suffix='B'):
+    """Format file size info in a readable form."""
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
             return "%3.1f%s%s" % (num, unit, suffix)
@@ -21,6 +40,11 @@ videos_set = set(['.MP4', '.mp4', '.m4v', '.mkv', '.webm',
 audio_set = set(['mp3', '.m4a', '.ogg', '.falc', '.wav'])
 
 def get_file_info(path):
+    """Function recurssivly walks a path and returns file and 
+    directory information.
+
+    :param path: The path to look for files.
+    """
     p = Path(path)
     files = []
     # Recursive walk
