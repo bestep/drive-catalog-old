@@ -3,34 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Drive Catalog's documentation!
-=========================================
-
-Drive Catalog, drive-catalog, accepts an incoming path variable and 
-recursively scans the path and returns formatted file and directory
-information.
+.. include:: ../README.rst
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 2
+  :caption: Contents:
 
-License
-=======
+  modules
+  drive_catalog
 
-
-Usage Example
-=============
-
-Installation
-============
-
-Dirve Catalog Module
-====================
-
-.. automodule:: drive-catalog
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 Indices and tables
 ==================
