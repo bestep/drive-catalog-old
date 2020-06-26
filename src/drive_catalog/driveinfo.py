@@ -1,3 +1,17 @@
+"""driveinfo returns drive info
+
+:param path: The path of a folder or drive
+:type path: os.path
+
+:return: Returns a dictionary of drive information as:
+    {'name': str, drive name,
+    'total_files;: int, total number of files in drive,
+    'portable_drive': bool, Is the drive a mounted drive,
+    'size': int, size of drive in bytes,
+    'free': int, free space of drive in bytes,
+    'used': int, used space of drive in bytes,
+    'create_date': datetime, the reported create date of the drive}
+"""
 from datetime import datetime
 from pathlib import Path
 from shutil import disk_usage

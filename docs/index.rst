@@ -6,13 +6,15 @@
 Welcome to Drive Catalog's documentation!
 =========================================
 
-Drive Catalog, drive-catalog, accepts an incoming path variable and 
+Drive Catalog, drive_catalog, accepts an incoming path variable and 
 recursively scans the path and returns formatted file and directory
 information.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   modules
 
 License
 =======
@@ -24,10 +26,10 @@ Usage Example
 Installation
 ============
 
-Dirve Catalog Module
+Drive Catalog Module
 ====================
 
-.. automodule:: drive-catalog
+.. automodule:: drive_catalog
     :members:
     :undoc-members:
     :show-inheritance:
