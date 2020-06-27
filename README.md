@@ -1,4 +1,4 @@
-![Python package](https://github.com/bestep/drive-catalog/workflows/Python%20package/badge.svg) [![codecov](https://codecov.io/gh/bestep/drive-catalog/branch/master/graph/badge.svg)](https://codecov.io/gh/bestep/drive-catalog)
+![build](https://github.com/bestep/drive-catalog/workflows/Python%20package/badge.svg) [![codecov](https://codecov.io/gh/bestep/drive-catalog/branch/master/graph/badge.svg)](https://codecov.io/gh/bestep/drive-catalog)
 
 # Drive Catalog
 
