@@ -12,6 +12,7 @@ pytest = "*"
 cloud-sptheme = "*"
 pytest-cov = "*"
 tox = "*"
+codecov = "*"
 
 [requires]
 python_version = "3.8"
