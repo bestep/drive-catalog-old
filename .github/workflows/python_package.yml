@@ -31,3 +31,5 @@ jobs:
     - name: Test with pytest
       run: |
         pipenv run tox
+      env:
+        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
