@@ -1,8 +1,7 @@
-import sys
 import os
 
-sys.path.append('src')
 from drive_catalog import driveinfo
+
 
 def test_driveinfo_succeeds():
     path = os.path.join(os.getcwd(), 'testdrive')
