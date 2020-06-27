@@ -3,6 +3,9 @@ import codecs
 
 from setuptools import setup, find_packages
 
+with open("README.md", "r") as fh:
+          long_description = fh.read()
+
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
     with codecs.open(os.path.join(here, rel_path), 'r') as fp:
@@ -21,7 +24,7 @@ setup(
     version = get_version("src/drive_catalog/__init__.py"),
     author = "William Estep",
     description = "Return formatted file and directory information.",
-    long_description = "Return formatted file and drive information.",
+    long_description = long_description,
     long_description_content_type='text/x-rst',
     url="https://github.com/bestep/drive-catalog",
     package_dir = {"": "src"},

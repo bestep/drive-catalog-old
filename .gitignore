@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 *.swp
 .DS_Store
-testdrive/
+testdrive_local/
 
 # C extensions
 *.so
