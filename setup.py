@@ -16,15 +16,12 @@ def get_version(rel_path):
     else:
         raise RuntimeError("Unable to find version string.")
 
-with open('README.RST') as f:
-    long_desc = f.read()
-
 setup(
     name = "Drive Catalog",
     version = get_version("src/drive_catalog/__init__.py"),
     author = "William Estep",
     description = "Return formatted file and directory information.",
-    long_description = long_desc,
+    long_description = "",
     long_description_content_type='text/x-rst',
     package_dir = {"": "src"},
     packages = find_packages(where="src", exclude=['tests']),
