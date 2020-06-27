@@ -40,7 +40,8 @@ optional arguments:
   --version   Show the version number and exit.
 ```
 
-Call the application from the command-line with path:
+Call the application from the command-line with path. Note the testdrive folder
+contains public domain images, audio and video.
 
 ```bash
 > python drive-catalog testdrive/

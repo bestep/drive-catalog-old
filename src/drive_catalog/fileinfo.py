@@ -16,9 +16,6 @@
 
 """
 
-import sys
-import os
-import argparse
 from datetime import datetime
 from pathlib import Path
 
@@ -39,8 +36,9 @@ videos_set = set(['.MP4', '.mp4', '.m4v', '.mkv', '.webm',
                   '.mov', '.avi', '.wmv', '.mpg', '.flv', '.MOV'])
 audio_set = set(['mp3', '.m4a', '.ogg', '.falc', '.wav'])
 
+
 def get_file_info(path):
-    """Function recurssivly walks a path and returns file and 
+    """Function recurssivly walks a path and returns file and
     directory information.
 
     :param path: The path to look for files.
@@ -50,7 +48,7 @@ def get_file_info(path):
     # Recursive walk
     for child in p.glob("**/*"):
         if child.is_dir():
-            is_directory = True 
+            is_directory = True
         else:
             is_directory = False
         if child.exists():
@@ -86,8 +84,9 @@ def get_file_info(path):
                            'size': fileSize,
                            'type': fileType,
                            'path': filepath,
+                           'thumbnail': thumbnail,
                            'create_date': create_date,
                            'is_directory': is_directory,
-                          }
+                           }
             files.append(currentfile)
     return files
