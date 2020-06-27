@@ -17,14 +17,21 @@ def get_version(rel_path):
         raise RuntimeError("Unable to find version string.")
 
 setup(
-    name = "Drive Catalog",
+    name = "drive-catalog",
     version = get_version("src/drive_catalog/__init__.py"),
     author = "William Estep",
     description = "Return formatted file and directory information.",
-    long_description = "",
+    long_description = "Return formatted file and drive information.",
     long_description_content_type='text/x-rst',
+    url="https://github.com/bestep/drive-catalog",
     package_dir = {"": "src"},
     packages = find_packages(where="src", exclude=['tests']),
+    classifiers = [
+        "Development Status :: 3 - Alpha",
+        "Programming Language :: Python :: 3.8",
+        "Topic :: Utilities",
+        "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    ],
     entry_points = {
         'console_scripts': [
             'drive-catalog = drive_catalog.main:main',
