@@ -28,7 +28,7 @@ setup(
     author="William Estep",
     description="Return formatted file and directory information.",
     long_description=long_description,
-    long_description_content_type='text/x-rst',
+    long_description_content_type='text/markdown',
     url="https://github.com/bestep/drive-catalog",
     package_dir={"": "src"},
     packages=find_packages(where="src", exclude=['tests']),
