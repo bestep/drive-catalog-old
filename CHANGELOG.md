@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2020-06-26
+### Added
+- Setup code coverage with CodeCov, and github actions for commits and merges.
+
 ## [0.1.2] - 2020-06-26
 ### Added
 - Documentation added and sphinx theme setup.
