@@ -1,19 +1,27 @@
-import re
-import sys
+import os.path
+import codecs
 
 from setuptools import setup, find_packages
 
-import src.drive_catalog as drive_catalog
+def read(rel_path):
+    here = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(here, rel_path), 'r') as fp:
+        return fp.read()
 
-with open('README.RST') as f:
-    long_desc = f.read()
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
 
 setup(
     name = "Drive Catalog",
-    version = drive_catalog.__version__,
+    version = get_version("src/drive_catalog/__init__.py"),
     author = "William Estep",
     description = "Return formatted file and directory information.",
-    long_description = long_desc,
+    long_description = "",
     long_description_content_type='text/x-rst',
     package_dir = {"": "src"},
     packages = find_packages(where="src", exclude=['tests']),
