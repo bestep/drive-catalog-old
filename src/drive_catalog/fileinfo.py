@@ -8,7 +8,8 @@
 .. code-block:: python
 
     {'name': str, # file name
-    'size': str, # file size in bytes
+    'size': str, # file size as string
+    'size_bytes: int, # file size in bytes
     'path': str, # the path of the file
     'create_date': datetime # the reported create date of the file
     'is_directory': bool # True if the current item is a directory or folder
@@ -68,20 +69,23 @@ def get_file_info(path):
                 fileType = ''
 
             child_size = ''
-
+            child_size_bytes = 0
             create_date = ''
             if (child_info != ''):
                 # mod_timestamp = datetime.\
                 #        fromtimestamp(child_info.st_mtime)
                 create_date = datetime.fromtimestamp(child_info.st_atime)
                 child_size = sizeof_fmt(child_info.st_size)
+                child_size_bytes = child_info.st_size
             fileName = child.name
             fileSize = child_size
+            fileSizeBytes = child_size_bytes
             filepath = str(child)
             thumbnail = ''
 
             currentfile = {'name': fileName,
                            'size': fileSize,
+                           'size_bytes': fileSizeBytes,
                            'type': fileType,
                            'path': filepath,
                            'thumbnail': thumbnail,
