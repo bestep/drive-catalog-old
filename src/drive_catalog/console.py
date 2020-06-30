@@ -1,5 +1,6 @@
 import os
 import click
+import logging
 
 from drive_catalog import __version__
 from drive_catalog import driveinfo
@@ -24,4 +25,5 @@ def main(path):
 
 
 if __name__ == '__main__':
+    logging.getLogger(__name__).addHandler(logging.NullHandler())
     main()
