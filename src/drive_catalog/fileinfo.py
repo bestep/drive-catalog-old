@@ -34,7 +34,8 @@ def sizeof_fmt(num, suffix='B'):
 images_set = set(['.jpg', '.JPG', '.jpx', '.png', '.gif',
                   '.tif', '.bmp', '.psd', 'heic', '.eps'])
 videos_set = set(['.MP4', '.mp4', '.m4v', '.mkv', '.webm',
-                  '.mov', '.avi', '.wmv', '.mpg', '.flv', '.MOV'])
+                  '.mov', '.avi', '.wmv', '.mpg', '.flv',
+                  '.mts', '.MOV', '.ovg'])
 audio_set = set(['mp3', '.m4a', '.ogg', '.falc', '.wav'])
 
 
@@ -59,11 +60,11 @@ def get_file_info(path):
             except FileNotFoundError as e:
                 print(e)
             fileType = ''
-            if child.suffix in images_set:
+            if child.suffix.lower() in images_set:
                 fileType = 'Image'
-            elif child.suffix in videos_set:
+            elif child.suffix.lower() in videos_set:
                 fileType = 'Video'
-            elif child.suffix in audio_set:
+            elif child.suffix.lower() in audio_set:
                 fileType = 'Audio'
             else:
                 fileType = ''
