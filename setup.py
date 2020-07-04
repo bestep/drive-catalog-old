@@ -29,11 +29,10 @@ setup(
     description="Return formatted file and directory information.",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url="https://github.com/bestep/drive-catalog",
+    url="https://bitbucket.com/bestep/drive-catalog",
     package_dir={"": "src"},
     packages=find_packages(where="src", exclude=['tests']),
     classifiers=[
-        "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3.8",
         "Topic :: Utilities",
         "License :: OSI Approved :: GNU Affero General "
@@ -41,7 +40,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'drive-catalog = drive_catalog.main:main',
+            'drive-catalog = drive_catalog.console:main',
         ]
     },
     python_requires=">=3.7",
