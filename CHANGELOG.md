@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Option to filter File data returned by Media types, Images, Video and/or
   Audio.
 
+## [0.4.1] - 2020-07-04
+### Added
+- Add examples of library use to the README file.
+
 ## [0.4] - 2020-07-03
 ### Added
 - Added tests for all of the file types.

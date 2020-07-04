@@ -29,7 +29,7 @@ setup(
     description="Return formatted file and directory information.",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url="https://bitbucket.com/bestep/drive-catalog",
+    url="https://github.com/bestep/drive-catalog",
     package_dir={"": "src"},
     packages=find_packages(where="src", exclude=['tests']),
     classifiers=[
