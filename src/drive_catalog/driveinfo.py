@@ -19,6 +19,7 @@
 from datetime import datetime
 from pathlib import Path
 from shutil import disk_usage
+from dateutil import tz
 
 
 def get_drive_info(path):
@@ -38,7 +39,10 @@ def get_drive_info(path):
     drive_free_space_in_bytes = drive_shutilstats.free
     drive_used_space_in_bytes = drive_shutilstats.used
     drive_name = p.stem
-    drive_create_date = datetime.fromtimestamp(drive_info.st_ctime)
+    # Get timezone info
+    localtz = tz.gettz()
+    drive_create_date = datetime.fromtimestamp(drive_info.st_ctime,
+                                               localtz).isoformat()
     drive = {'name': drive_name,
              'total_files': total_files,
              'portable_drive': drive_is_mount,
